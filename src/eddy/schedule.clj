@@ -1,8 +1,7 @@
 (ns eddy.schedule
   (:require [clojurewerkz.quartzite.scheduler :as quartzite]
             [clojurewerkz.quartzite.jobs :as jobs]
-            [clojurewerkz.quartzite.triggers :as triggers]
-            [clojurewerkz.quartzite.schedule.calendar-interval]))
+            [clojurewerkz.quartzite.triggers :as triggers]))
 
 (defmacro job [job-type key]
   `(jobs/build
@@ -10,11 +9,13 @@
     (jobs/with-identity (jobs/key ~key))))
 
 (defn interval-class [interval-key]
-  (str
-   "clojurewerkz.quartzite.schedule."
-   (case interval-key
-     :every "calendar-interval"
-     (throw (IllegalArgumentException. "Interval syntax invalid")))))
+  (let [namespace (str
+                   "clojurewerkz.quartzite.schedule."
+                   (case interval-key
+                     :every "calendar-interval"
+                     (throw (IllegalArgumentException. "Interval syntax invalid"))))]
+    (require (symbol namespace))
+    namespace))
 
 (defn calendar-interval-function [unit]
   (case (str unit)
