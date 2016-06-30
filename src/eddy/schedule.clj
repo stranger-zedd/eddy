@@ -41,7 +41,7 @@
                    (throw (IllegalArgumentException. "Interval syntax invalid")))]
     (map #(cons (symbol namespace (first %)) (rest %)) operands)))
 
-(defn alpaca [interval-data]
+(defn make-schedule [interval-data]
   (let [operator (first interval-data)
         namespace (interval-class operator)
         operands (interval-operands namespace (next interval-data))]
@@ -53,7 +53,7 @@
   `(triggers/build
     (triggers/with-identity (triggers/key ~job-key))
     (triggers/start-now)
-    (triggers/with-schedule ~(alpaca interval))))
+    (triggers/with-schedule ~(make-schedule interval))))
 
 (defn schedule-jobs [& jobs]
   (let [scheduler (-> (quartzite/initialize) quartzite/start)]
