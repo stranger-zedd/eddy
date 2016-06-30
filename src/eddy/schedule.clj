@@ -19,7 +19,12 @@
 
 (defn calendar-interval-function [unit]
   (case (str unit)
-    (or "second" "seconds") "with-interval-in-seconds"
+    "second" "with-interval-in-seconds"
+    "seconds" "with-interval-in-seconds"
+    "minute" "with-interval-in-minutes"
+    "minutes" "with-interval-in-minutes"
+    "hour" "with-interval-in-hours"
+    "hours" "with-interval-in-hours"
     (throw (IllegalArgumentException. "Interval syntax invalid"))))
 
 (defn calendar-interval-operands [operand-data]
