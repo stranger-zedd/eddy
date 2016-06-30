@@ -1,12 +1,8 @@
 (ns eddy.schedule
   (:require [clojurewerkz.quartzite.scheduler :as quartzite]
-            [clojurewerkz.quartzite.jobs :as jobs :refer [defjob]]
+            [clojurewerkz.quartzite.jobs :as jobs]
             [clojurewerkz.quartzite.triggers :as triggers]
             [clojurewerkz.quartzite.schedule.calendar-interval :refer [schedule with-interval-in-seconds]]))
-
-(defjob NoOpJob
-  [ctx]
-  (println "Something"))
 
 (defn job [job-type key]
   (jobs/build
@@ -20,11 +16,12 @@
    (triggers/with-schedule (schedule
                             (with-interval-in-seconds interval)))))
 
-(def jobs
-  (list
-   {:job (job NoOpJob "jobs.mail") :trigger (trigger "jobs.mail" 2)}))
-
-(defn run []
+(defn schedule-jobs [& jobs]
   (let [scheduler (-> (quartzite/initialize) quartzite/start)]
     (doseq [job jobs]
       (quartzite/schedule scheduler (get job :job) (get job :trigger)))))
+
+(defmacro sch [job-type interval]
+  (let [job-id (str "jobs." (str job-type) "." (. (str (gensym)) toLowerCase))
+        job-class (resolve job-type)]
+    `{:job (job ~job-class ~job-id) :trigger (trigger ~job-id ~interval)}))
