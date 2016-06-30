@@ -8,4 +8,4 @@
 
 (defn -main [& args]
   (schedule-jobs
-   (sch NoOpJob 1)))
+   (sch NoOpJob :every 1 second)))
