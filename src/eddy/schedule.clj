@@ -13,7 +13,7 @@
                    "clojurewerkz.quartzite.schedule."
                    (case interval-key
                      :every "calendar-interval"
-                     (throw (IllegalArgumentException. "Unknown interval operator '" interval-key "'"))))]
+                     (throw (IllegalArgumentException. (str "Unknown interval operator '" interval-key "'")))))]
     (require (symbol namespace))
     namespace))
 
@@ -38,7 +38,7 @@
 (defn interval-operands [namespace operand-data]
   (let [operands (case namespace
                    "clojurewerkz.quartzite.schedule.calendar-interval" (calendar-interval-operands operand-data)
-                   (throw (IllegalArgumentException. (str "Can't make interval operands for namespace '" namespace "'")))]
+                   (throw (IllegalArgumentException. (str "Can't make interval operands for namespace '" namespace "'"))))]
     (map #(cons (symbol namespace (first %)) (rest %)) operands)))
 
 (defn make-schedule [interval-data]
