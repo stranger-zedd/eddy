@@ -2,8 +2,7 @@
   (:require [eddy.schedule :refer [schedule-jobs sch]]
             [clojurewerkz.quartzite.jobs :refer [defjob]]))
 
-(defjob NoOpJob
-  [ctx]
+(defjob NoOpJob [ctx]
   (println "Something"))
 
 (defn -main [& args]
