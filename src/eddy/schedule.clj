@@ -60,6 +60,5 @@
       (quartzite/schedule scheduler (get job :job) (get job :trigger)))))
 
 (defmacro sch [job-type & interval]
-  (let [job-id (str "jobs." (str job-type) "." (. (str (gensym)) toLowerCase))
-        job-class (resolve job-type)]
-    `{:job (job ~job-class ~job-id) :trigger (trigger ~job-id ~interval)}))
+  (let [job-id (str "jobs." (str job-type) "." (. (str (gensym)) toLowerCase))]
+    `{:job (job ~job-type ~job-id) :trigger (trigger ~job-id ~interval)}))
