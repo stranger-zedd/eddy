@@ -1,4 +1,5 @@
 (ns eddy.core
+  (:gen-class)
   (:require [eddy.schedule :refer [schedule-jobs sch]]
             [eddy.schedule.calendar-interval :refer [every]]
             [clojurewerkz.quartzite.jobs :refer [defjob]]))
