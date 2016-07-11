@@ -1,5 +1,6 @@
 (ns eddy.core
   (:require [eddy.schedule :refer [schedule-jobs sch]]
+            [eddy.schedule.calendar-interval :refer [every]]
             [clojurewerkz.quartzite.jobs :refer [defjob]]))
 
 (defjob NoOpJob [ctx]
@@ -7,4 +8,4 @@
 
 (defn -main [& args]
   (schedule-jobs
-   (sch NoOpJob :every 1 second)))
+   (sch NoOpJob (every 1 second))))
