@@ -1,0 +1,17 @@
+* DONE Make quartzite wrapper
+  Strictly necessary? No. Fun? Yes!
+* DONE Work out how to send mail with postal
+* DONE Check S3 for updated files
+  - [X] Get list of files
+  - [X] Get new files since last check
+  - [X] Save last checked
+* TODO E-mail template
+  - [ ] Get from S3
+  - [ ] Use as the body of sent e-mail
+* TODO Deployment
+  - [X] Dockerfile
+  - [ ] Script to save container to S3
+  - [ ] Script to get latest package (put into Zephyrus server deployment)
+  - [ ] Run container on Zephyrus server
+* TODO Refine docker setup
+  Could possibly run postfix in a separate container?
