@@ -19,4 +19,7 @@
 (defn -main [& args]
   (let [now (t/date-time 2016 6 2)
         changed-objects (data/leaves-since-last-check)]
-    (println (content/add-content (data/get-email-template) changed-objects))))
+    (postal/send-message {:from "blah@blah"
+                          :to "someone@somewhere"
+                          :subject "Something"
+                          :body (content/add-content (data/get-email-template) changed-objects)})))
