@@ -8,10 +8,14 @@
 * TODO E-mail template
   - [ ] Get from S3
   - [ ] Use as the body of sent e-mail
+* TODO Subscriber list
+  - [ ] Get from S3
+  - [ ] Use to determine to whom to send e-mail
 * TODO Deployment
   - [X] Dockerfile
   - [ ] Script to save container to S3
   - [ ] Script to get latest package (put into Zephyrus server deployment)
   - [ ] Run container on Zephyrus server
+  - [ ] Work out how to make mail not automatically show up as junk
 * TODO Refine docker setup
   Could possibly run postfix in a separate container?
