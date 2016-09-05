@@ -30,6 +30,9 @@
 (defn get-last-check []
   (time-format/parse (get-data data-bucket "last-check")))
 
+(defn get-email-template []
+  (get-data data-bucket "template.html"))
+
 (defn put-last-check [date]
   (put-data data-bucket "last-check" (str date)))
 

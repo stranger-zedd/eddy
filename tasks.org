@@ -6,7 +6,7 @@
   - [X] Get new files since last check
   - [X] Save last checked
 * TODO E-mail template
-  - [ ] Get from S3
+  - [X] Get from S3
   - [ ] Use as the body of sent e-mail
 * TODO Subscriber list
   - [ ] Get from S3

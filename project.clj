@@ -7,6 +7,7 @@
                  [environ "1.0.3"]
                  [ch.qos.logback/logback-classic "1.1.3"]
                  [com.draines/postal "2.0.0"]
+                 [ring/ring-codec "1.0.1"]
                  [amazonica "0.3.58"]]
   :resource-paths ["src/resources"]
   :main ^:skip-aot eddy.core
