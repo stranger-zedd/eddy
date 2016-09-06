@@ -2,6 +2,7 @@
   (:require [amazonica.aws.s3 :refer [get-object put-object list-objects]]
             [clj-time.format :as time-format]
             [environ.core :refer [env]]
+            [clojure.string :as string]
             [clojure.java.io :refer [reader]]))
 
 (def zephyrus-bucket (env :zephyrus-bucket))
@@ -33,8 +34,12 @@
 (defn get-email-template []
   (get-data data-bucket "template.html"))
 
+(defn get-mailing-list []
+  (string/split (get-data data-bucket "subscribers.txt") #"\n"))
+
 (defn put-last-check [date]
-  (put-data data-bucket "last-check" (str date)))
+  (put-data data-bucket "last-check" (str date))
+  (println "put"))
 
 (defn leaves-since-last-check []
   (leaves-after zephyrus-bucket (get-last-check)))
