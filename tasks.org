@@ -8,14 +8,21 @@
 * DONE E-mail template
   - [X] Get from S3
   - [X] Use as the body of sent e-mail
-* TODO Subscriber list
-  - [ ] Get from S3
-  - [ ] Use to determine to whom to send e-mail
+* DONE Subscriber list
+  - [X] Get from S3
+  - [X] Use to determine to whom to send e-mail
+* DONE Set up e-mail server
+  - [X] Use SES
+* TODO Set up ACTUAL scheduled job
+  - [ ] Use quartzite wrapper from before
+  - [ ] Take code from -main
 * TODO Deployment
   - [X] Dockerfile
   - [ ] Script to save container to S3
   - [ ] Script to get latest package (put into Zephyrus server deployment)
   - [ ] Run container on Zephyrus server
-  - [ ] Work out how to make mail not automatically show up as junk
-* TODO Refine docker setup
-  Could possibly run postfix in a separate container?
+  - [X] Work out how to make mail not automatically show up as junk
+* TODO Mail monitoring
+  Otherwise Amazon might get cranky at me
+  - [ ] Monitor bounces
+  - [ ] Monitor complaints
