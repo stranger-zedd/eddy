@@ -4,22 +4,16 @@
             [eddy.schedule.calendar-interval :refer [every]]
             [eddy.data :as data]
             [eddy.content :as content]
-            [postal.core :as postal]
+            [eddy.mail :as mail]
             [clj-time.core :as t]
             [clojurewerkz.quartzite.jobs :refer [defjob]]))
 
-(defjob MailJob [ctx]
-  (println "sending?")
-  (postal/send-message {:from "blah@blah"
-                        :to "someone@somewhere"
-                        :subject "Something"
-                        :body "Abc"})
-  (println "sent?"))
-
 (defn -main [& args]
   (let [now (t/date-time 2016 6 2)
-        changed-objects (data/leaves-since-last-check)]
-    (postal/send-message {:from "blah@blah"
-                          :to "someone@somewhere"
-                          :subject "Something"
-                          :body (content/add-content (data/get-email-template) changed-objects)})))
+        changed-objects (data/leaves-since-last-check)
+        email-body (content/render (data/get-email-template) changed-objects)]
+    (if (not (empty? changed-objects))
+      (doseq [address (data/get-mailing-list)]
+        (mail/send-message address email-body)
+        (Thread/sleep (mail/sender-delay))))
+    (data/put-last-check now)))

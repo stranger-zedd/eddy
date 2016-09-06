@@ -19,5 +19,5 @@
 (defn zephyrus-links [content]
   (string/join "\n" (map #(zephyrus-link (get % :key)) content)))
 
-(defn add-content [template content]
+(defn render [template content]
   (string/replace-first template "{{content-links}}" (zephyrus-links content)))
