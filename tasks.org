@@ -13,9 +13,9 @@
   - [X] Use to determine to whom to send e-mail
 * DONE Set up e-mail server
   - [X] Use SES
-* TODO Set up ACTUAL scheduled job
-  - [ ] Use quartzite wrapper from before
-  - [ ] Take code from -main
+* DONE Set up ACTUAL scheduled job
+  - [X] Use quartzite wrapper from before
+  - [X] Take code from -main
 * TODO Deployment
   - [X] Dockerfile
   - [ ] Script to save container to S3
