@@ -5,6 +5,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [clojurewerkz/quartzite "2.0.0"]
                  [environ "1.0.3"]
+                 [org.clojure/tools.logging "0.3.1"]
                  [ch.qos.logback/logback-classic "1.1.3"]
                  [com.draines/postal "2.0.0"]
                  [ring/ring-codec "1.0.1"]

@@ -38,8 +38,7 @@
   (string/split (get-data data-bucket "subscribers.txt") #"\n"))
 
 (defn put-last-check [date]
-  (put-data data-bucket "last-check" (str date))
-  (println "put"))
+  (put-data data-bucket "last-check" (str date)))
 
 (defn leaves-since-last-check []
   (leaves-after zephyrus-bucket (get-last-check)))
