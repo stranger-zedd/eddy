@@ -5,7 +5,7 @@
 (def email-user (env :email-user))
 (def email-pass (env :email-pass))
 (def email-host (env :email-host))
-(def email-delay (env :email-delay 5000))
+(def email-delay (env :email-delay 70))
 
 (defn send-message [address, body]
   (postal/send-message {:user email-user
