@@ -18,8 +18,8 @@
   - [X] Take code from -main
 * TODO Deployment
   - [X] Dockerfile
-  - [ ] Script to save container to S3
-  - [ ] Script to get latest package (put into Zephyrus server deployment)
+  - [X] Script to build and package container
+  - [X] Script to get latest package (put into Zephyrus server deployment)
   - [ ] Run container on Zephyrus server
   - [X] Work out how to make mail not automatically show up as junk
 * TODO Mail monitoring
